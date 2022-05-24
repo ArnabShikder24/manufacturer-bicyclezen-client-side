@@ -37,7 +37,7 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         await sendEmailVerification();
-        toast('Successful SignUp. Sent Email Verification email');
+        toast.success('Successful SignUp. Sent Email Verification email');
 
     }
     return (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { toast } from 'react-toastify';
 import { sendPasswordResetEmail } from 'firebase/auth';
@@ -12,15 +12,16 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const [resetEmail, setResetEmail] = useState('');
-
     let signInError;
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     
     if (loading || gLoading) {
         return <Loading></Loading>
     }
     if(user || gUser) {
-        console.log(user || gUser)
+        navigate(from, { replace: true });
     }
 
     if(error || gError){

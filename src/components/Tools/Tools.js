@@ -5,7 +5,7 @@ const Tools = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('tools.json')
+        fetch('http://localhost:5000/product')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, [])
@@ -16,7 +16,9 @@ const Tools = () => {
             <div className='flex justify-center my-10'>
                 <div className='grid grid-cols-1 gap-14 lg:grid-cols-3'>
                     {
-                        products.map(p => <ToolCard key={p._id}></ToolCard>)
+                        products.slice(0, 6).map(p => <ToolCard key={p._id}
+                            product={p}
+                        ></ToolCard>)
                     }
                 </div>    
             </div>            

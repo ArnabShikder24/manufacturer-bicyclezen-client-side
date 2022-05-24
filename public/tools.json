@@ -1,62 +1,62 @@
 [
-    {
-      "_id": "626cb4d2e7674339f5373e85",
-      "price": "354",
-      "quantity": 12,
-      "sold": 4,
-      "img": "https://i.ibb.co/Tg1NQfQ/product-item-17.jpg",
-      "title": "Glorious Eau",
-      "supplier": "Mcleod Mueller",
-      "discription": "Perfume Glorious Oud Eau de Parfum by My Perfumes is a dark, sweet-spicy perfume with a woody Oudh. The top note has a pleasantly fresh character with citrus, floral and saffron notes. A perfume that draws from the full."
-    },
-    {
-      "_id": "626cb4d224b34443af116ded",
-      "price": "388",
-      "quantity": 22,
-      "sold": 6,
-      "img": "https://i.ibb.co/DMHqt4Y/product-item-21.jpg",
-      "title": "Bibliotheque",
-      "supplier": "Mcclain Forbes",
-      "discription": "Bibliothèque by Byredo is a Floral Woody Musk fragrance for women and men. Bibliothèque was launched in 2017. Top notes are Plum and Peach; middle notes are Violet and Peony; base notes are Leather."
-    },
-    {
-      "_id": "626cb4d2072929e166cdba99",
-      "price": "307",
-      "quantity": 25,
-      "sold": 11,
-      "img": "https://i.ibb.co/v3NPLkf/product-item-20.jpg",
-      "title": "Dunas De Un",
-      "supplier": "Robertson Espinoza",
-      "discription": "A scent reminiscent of summer nights spent walking across white sands and beach dunes, Fueguia 1833's Dunas de un Cuerpo produces exotic bursts of amber, while heart notes of olibanum"
-    },
-    {
-      "_id": "626cb4d2344ff672ab55e1c5",
-      "price": "226",
-      "quantity": 33,
-      "sold": 10,
-      "img": "https://i.ibb.co/N1qvW2W/product-item-22.jpg",
-      "title": "Cuerpo Eau",
-      "supplier": "Tricia Golden",
-      "discription": "Esse eu anim in nostrud cupidatat culpa.A scent reminiscent of summer nights spent walking across white sands and beach dunes. Dunas de un Cuerpo pure perfume produces."
-    },
-    {
-      "_id": "626cb4d2078091e62caebd0a",
-      "price": "149",
-      "quantity": 19,
-      "sold": 5,
-      "img": "https://i.ibb.co/B2kwtYb/product-item-19.jpg",
-      "title": "Graceful Diamond",
-      "supplier": "Randall Mccray",
-      "discription": "White Diamonds by Elizabeth Taylor is a Floral Aldehyde fragrance for women. White Diamonds was launched in 1991. The nose behind this fragrance is Carlos Benaim."
-    },
-    {
-      "_id": "626cb4d29b71aa1fc35ae57d",
-      "price": "167",
-      "quantity": 23,
-      "sold": 12,
-      "img": "https://i.ibb.co/X3F1szv/product-item-18.jpg",
-      "title": "Garden A Winter",
-      "supplier": "Louise Bennett",
-      "discription": "The emanation of flavors and scent notes for The Alchemist's Garden A Winter Melody unfurl in a whiff of citrus opening top notes including bergamot."
-    }
-  ]
+  {
+    "_id": 1,
+    "img": "https://i.ibb.co/kKLT8BD/51-large-default.jpg",
+    "name": "Cylinder",
+    "description": "A cylinder has traditionally been a three-dimensional solid.",
+    "price": 10999,
+    "min_order": 50,
+    "available_quantity": 5366,
+    "sold": 0
+  },
+  {
+    "_id": 2,
+    "img": "https://i.ibb.co/Ttyn7BY/50-large-default.jpg",
+    "name": "Bike Light",
+    "description": "Bicycle lighting is illumination attached to bicycles whose purpose above all is.",
+    "price": 20000,
+    "min_order": 100,
+    "available_quantity": 4780,
+    "sold": 0
+  },
+  {
+    "_id": 3,
+    "img": "https://i.ibb.co/Wpkk0MB/54-large-default.jpg",
+    "name": "Synthetic rubber",
+    "description": "A synthetic rubber is any artificial elastomer. They are polymers byproducts.",
+    "price": 5000,
+    "min_order": 500,
+    "available_quantity": 24663,
+    "sold": 0
+  },
+  {
+    "_id": 4,
+    "img": "https://i.ibb.co/Ntp1Wj3/59-large-default.jpg",
+    "name": "bicycle wheel ",
+    "description": "Bicycle Wheel is a readymade from Marcel Duchamp consisting of a bicycle ",
+    "price": 5770,
+    "min_order": 150,
+    "available_quantity": 7574,
+    "sold": 0
+  },
+  {
+    "_id": 5,
+    "img": "https://i.ibb.co/JzrzcHB/25-large-default.jpg",
+    "name": "Handlebar",
+    "description": "Made from high quality aluminum material, which is durable but also solid and practical.",
+    "price": 3700,
+    "min_order": 300,
+    "available_quantity": 8505,
+    "sold": 0
+  },
+  {
+    "_id": 6,
+    "img": "https://i.ibb.co/QMFxfhF/47-large-default.jpg",
+    "name": "biking saddle bag",
+    "description": "Made from high quality cloth, which is durable but also solid",
+    "price": 6500,
+    "min_order": 130,
+    "available_quantity": 3345,
+    "sold": 0
+  }
+]

@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import 'react-toastify/dist/ReactToastify.css';
+import Purchase from './components/Purchase/Purchase';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Navber></Navber>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>     
+        <Route path='/purchase/:productId' element={<Purchase></Purchase>}></Route>     
         <Route path='/login' element={<Login></Login>}></Route>     
         <Route path='/signup' element={<SignUp></SignUp>}></Route>     
       </Routes>

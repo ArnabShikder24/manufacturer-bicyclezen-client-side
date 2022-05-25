@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { toast } from 'react-toastify';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -16,16 +17,21 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [token] = useToken(user || gUser)
     
+    
+    useEffect( () => {
+        if(token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
+
     if (loading || gLoading) {
         return <Loading></Loading>
     }
-    if(user || gUser) {
-        navigate(from, { replace: true });
-    }
 
     if(error || gError){
-        signInError= <p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
+        signInError = <p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
     }
 
     const onSubmit = data => {

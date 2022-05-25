@@ -1,10 +1,11 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from  '../../firebase.init'
 import Loading from '../../components/Loading/Loading';
 import { toast } from 'react-toastify';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -18,11 +19,12 @@ const SignUp = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [sendEmailVerification] = useSendEmailVerification(auth);
-   
     let signInError;
+    const [token] = useToken(user || gUser);
+    const navigate = useNavigate();
 
-    if(user || gUser) {
-        console.log(user || gUser);
+    if(token) {
+        navigate('/')
     }
 
     if (loading || gLoading || updating) {

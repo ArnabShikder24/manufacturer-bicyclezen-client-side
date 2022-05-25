@@ -156,8 +156,8 @@ const Purchase = () => {
                     </div>
                     <input className='btn w-full btn-primary max-w-xs text-white mt-5' type="submit" value="Buy now" />
                 </form>
+                </div>
             </div>
-        </div>
             </div>
         </div>
     );

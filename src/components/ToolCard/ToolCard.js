@@ -9,7 +9,7 @@ const ToolCard = ({product}) => {
             <div className="card card-compact w-64 lg:w-80 bg-base-100 shadow-xl">
             <figure><img src={img} alt={name} /></figure>
             <div className="card-body">
-                <h2 className="card-title">{name} <button class="ml-2 btn btn-xs no-animation">Available: {available_quantity}</button></h2>
+                <h2 className="card-title">{name} <button className="ml-2 btn btn-xs no-animation">Available: {available_quantity}</button></h2>
                 <p>{description.slice(0, 55)}...</p>
                 <p>Per-Unit-Price: ${price}</p>
                 <p>min-order: ${min_order}</p>

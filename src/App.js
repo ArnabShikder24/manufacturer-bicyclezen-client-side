@@ -13,6 +13,8 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrder from './Pages/Dashboard/MyOrder';
 import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import ManageAdmin from './Pages/Dashboard/ManageAdmin';
+import RequireAdmin from './Pages/Login/RequireAdmin';
 
 function App() {
   return (
@@ -22,9 +24,10 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>     
         <Route path='/purchase/:productId' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>     
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
-          <Route index element={<MyOrder></MyOrder>}></Route>
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='myorders' element={<MyOrder></MyOrder>}></Route>
           <Route path='dashaddreview' element={<AddReview></AddReview>}></Route>
-          <Route path='dashprofile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='dashadmin' element={<RequireAdmin><ManageAdmin></ManageAdmin></RequireAdmin>}></Route>
         </Route>     
         <Route path='/login' element={<Login></Login>}></Route>     
         <Route path='/signup' element={<SignUp></SignUp>}></Route>     

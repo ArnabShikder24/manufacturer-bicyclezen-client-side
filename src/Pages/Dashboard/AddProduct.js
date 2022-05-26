@@ -110,7 +110,7 @@ const AddProduct = () => {
                 </label>
                 <input
                     type="number"
-                    placeholder="Price"
+                    placeholder="Minimum Order"
                     className="input input-bordered w-full max-w-xs"
                     {...register("min_order", {
                         required: {
@@ -130,7 +130,7 @@ const AddProduct = () => {
                 </label>
                 <input
                     type="number"
-                    placeholder="Price"
+                    placeholder="Available Quantity"
                     className="input input-bordered w-full max-w-xs"
                     {...register("available_quantity", {
                         required: {

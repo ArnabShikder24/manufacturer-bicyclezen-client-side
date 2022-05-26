@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
 const ProductRow = ({product, index, refetch}) => {
+    
     const handleDeleteProduct = id => {
 
         swal({

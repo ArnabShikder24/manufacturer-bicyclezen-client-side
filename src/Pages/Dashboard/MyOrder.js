@@ -2,12 +2,15 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import swal from 'sweetalert';
 import auth from '../../firebase.init';
 
 const MyOrder = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
+    const [load, setLoad] = useState(false);
 
     useEffect(() => {
         if(user) {
@@ -29,7 +32,40 @@ const MyOrder = () => {
                 setOrders(data);
             })
         }
-    }, [user, navigate])
+    }, [user, navigate, load])
+
+    const handleCancelOrder = id => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this order!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+
+                fetch(`http://localhost:5000/order/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}` 
+                }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.deletedCount) {
+                        toast.success(`Order is Successfully Deleted`);
+                        setLoad(!load)
+                        
+                    }
+                    else {
+                        toast.error('something went wrong, please try again');
+                        
+                    }
+                })
+            }
+          });
+    }
 
     return (
         <div>
@@ -44,7 +80,7 @@ const MyOrder = () => {
                     <th>Order Quantity</th>
                     <th>Address</th>
                     <th>Payment</th>
-                    <th>Action</th>
+                    <th>Action or Transaction id</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,7 +95,7 @@ const MyOrder = () => {
                                 {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`} className='btn btn-xs btn-success text-white'>Pay</Link>}
                                 {(order.price && order.paid) && <span className='text-success'>PAID</span>}
                             </td>
-                            <td><button className='btn btn-xs'>Cancel Order</button></td>
+                            <td>{order.paid ? <span>{order.transactionId}</span> : <button onClick={() => handleCancelOrder(order._id)} className='btn btn-xs'>Cancel Order</button> }</td>
                         </tr>)
                         }
 

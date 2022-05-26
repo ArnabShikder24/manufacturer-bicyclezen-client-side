@@ -22,6 +22,7 @@ const Purchase = () => {
         const productId = product?._id;
         const name = user?.displayName;
         const email = user?.email;
+        const price = product?.price;
         const phone = e.target.phone.value;
         const order = e.target.order.value;
         const address = e.target.address.value;
@@ -29,6 +30,7 @@ const Purchase = () => {
             name,
             email,
             phone,
+            price,
             productName,
             productId,
             order,

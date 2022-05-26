@@ -128,7 +128,7 @@ const MyProfile = () => {
                             required
                         />
                     </div>
-                    <input className='btn w-full btn-primary max-w-xs text-white mt-5' type="submit" value="Add Review" />
+                    <input className='btn w-full btn-primary max-w-xs text-white mt-5' type="submit" value="Update Profile" />
                 </form>
                 </div>
             </div>

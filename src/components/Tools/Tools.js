@@ -16,7 +16,7 @@ const Tools = () => {
             <div className='flex justify-center my-10'>
                 <div className='grid grid-cols-1 gap-14 lg:grid-cols-3'>
                     {
-                        products.slice(0, 6).map(p => <ToolCard key={p._id}
+                        products.map(p => <ToolCard key={p._id}
                             product={p}
                         ></ToolCard>)
                     }

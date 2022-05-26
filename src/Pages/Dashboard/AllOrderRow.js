@@ -15,7 +15,7 @@ const AllOrderRow = ({order, index, refetch}) => {
           .then((willDelete) => {
             if (willDelete) {
 
-                fetch(`http://localhost:5000/order/${id}`, {
+                fetch(`https://desolate-beach-97825.herokuapp.com/order/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}` 

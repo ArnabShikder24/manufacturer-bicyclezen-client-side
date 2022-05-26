@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
 const ProductRow = ({product, index, refetch}) => {
-    
+
     const handleDeleteProduct = id => {
 
         swal({
@@ -16,7 +16,7 @@ const ProductRow = ({product, index, refetch}) => {
           .then((willDelete) => {
             if (willDelete) {
 
-                fetch(`http://localhost:5000/product/${id}`, {
+                fetch(`https://desolate-beach-97825.herokuapp.com/product/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}` 

@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L3dYPF8Nq4jgfU1or90Cu4t3TrracsvtGL3a
 
 const Payment = () => {
     const {orderId} = useParams();
-    const {data: order, isLoading} = useQuery(['order', orderId], () => fetch(`http://localhost:5000/order/${orderId}`, {
+    const {data: order, isLoading} = useQuery(['order', orderId], () => fetch(`https://desolate-beach-97825.herokuapp.com/order/${orderId}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -25,10 +25,10 @@ const Payment = () => {
         <div>
             <h1 className='text-2xl'>Your Order ID: {orderId}, please Pay</h1>
             <div className='flex justify-center items-center my-10'>
-            <div class="card w-96 bg-base-100 shadow-xl">
-            <div class="card-body">
+            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card-body">
                 <h1 className='text-primary font-bold'>Hello, {order?.name}</h1>
-                <h2 class="card-title">Pay for {order?.productName}</h2>
+                <h2 className="card-title">Pay for {order?.productName}</h2>
                 <p>Price: {order?.price}</p>
 
                 <div className='my-4'>

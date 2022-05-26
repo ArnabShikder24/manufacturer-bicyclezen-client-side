@@ -4,7 +4,7 @@ import Loading from '../../components/Loading/Loading';
 import AllOrderRow from './AllOrderRow';
 
 const ManageAllOrders = () => {
-    const {data: orders, isLoading, refetch} = useQuery('allorder', () => fetch('http://localhost:5000/order', {
+    const {data: orders, isLoading, refetch} = useQuery('allorder', () => fetch('https://desolate-beach-97825.herokuapp.com/order', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}` 

@@ -22,7 +22,7 @@ const MyProfile = () => {
             linkdin,
             address
         }
-        fetch(`http://localhost:5000/profile/${email}`,{
+        fetch(`https://desolate-beach-97825.herokuapp.com/profile/${email}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

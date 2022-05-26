@@ -4,7 +4,7 @@ import Loading from '../../components/Loading/Loading';
 import UserRow from './UserRow';
 
 const ManageAdmin = () => {
-    const {data : users, isLoading, refetch} = useQuery('user', () => fetch('http://localhost:5000/user', {
+    const {data : users, isLoading, refetch} = useQuery('user', () => fetch('https://desolate-beach-97825.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}` 

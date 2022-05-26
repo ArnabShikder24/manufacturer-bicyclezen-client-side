@@ -31,7 +31,7 @@ const AddProduct = () => {
                     available_quantity: data.available_quantity
                 }
                 // send database
-                fetch('http://localhost:5000/product', {
+                fetch('https://desolate-beach-97825.herokuapp.com/product', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

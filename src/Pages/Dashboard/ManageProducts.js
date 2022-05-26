@@ -4,7 +4,7 @@ import Loading from '../../components/Loading/Loading';
 import ProductRow from './ProductRow';
 
 const ManageProducts = () => {
-    const {data : products, isLoading, refetch} = useQuery('product', () => fetch('http://localhost:5000/product').then(res => res.json()))
+    const {data : products, isLoading, refetch} = useQuery('product', () => fetch('https://desolate-beach-97825.herokuapp.com/product').then(res => res.json()))
 
     if(isLoading) {
         return <Loading></Loading>

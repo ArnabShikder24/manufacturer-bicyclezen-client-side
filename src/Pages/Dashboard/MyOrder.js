@@ -14,7 +14,7 @@ const MyOrder = () => {
 
     useEffect(() => {
         if(user) {
-            fetch(`http://localhost:5000/order?email=${user?.email}`, {
+            fetch(`https://desolate-beach-97825.herokuapp.com/order?email=${user?.email}`, {
                 method: 'GET',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -45,7 +45,7 @@ const MyOrder = () => {
           .then((willDelete) => {
             if (willDelete) {
 
-                fetch(`http://localhost:5000/order/${id}`, {
+                fetch(`https://desolate-beach-97825.herokuapp.com/order/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}` 

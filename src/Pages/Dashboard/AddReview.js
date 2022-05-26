@@ -25,7 +25,7 @@ const AddReview = () => {
             return
         }
         setWrong(false);
-        fetch('http://localhost:5000/review',{
+        fetch('https://desolate-beach-97825.herokuapp.com/review',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

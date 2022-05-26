@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 const Purchase = () => {
     const [user] = useAuthState(auth);
     const {productId} = useParams();
-    const {data : product, isLoading} = useQuery(['product', productId], () => fetch(`http://localhost:5000/product/${productId}`).then(res => res.json()));
+    const {data : product, isLoading} = useQuery(['product', productId], () => fetch(`https://desolate-beach-97825.herokuapp.com/product/${productId}`).then(res => res.json()));
     const [wrong , setWrong] = useState(false);
 
     if(isLoading) {
@@ -53,7 +53,7 @@ const Purchase = () => {
             return;
         }
         setWrong(false);
-        fetch('http://localhost:5000/order',{
+        fetch('https://desolate-beach-97825.herokuapp.com/order',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

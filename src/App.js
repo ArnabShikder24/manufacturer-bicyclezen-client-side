@@ -19,6 +19,10 @@ import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Payment from './Pages/Dashboard/Payment';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
+import NotFound from './components/NotFound/NotFound';
+import Blogs from './Pages/Blogs/Blogs';
+import Contact from './Pages/Contact/Contact';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
       <Navber></Navber>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>     
+        <Route path='/home' element={<Home></Home>}></Route>     
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>     
+        <Route path='/myprotfolio' element={<MyPortfolio></MyPortfolio>}></Route>     
+        <Route path='/contact' element={<Contact></Contact>}></Route>     
         <Route path='/purchase/:productId' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>     
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
@@ -39,6 +47,7 @@ function App() {
         </Route>     
         <Route path='/login' element={<Login></Login>}></Route>     
         <Route path='/signup' element={<SignUp></SignUp>}></Route>     
+        <Route path='*' element={<NotFound></NotFound>}></Route>     
       </Routes>
       <Footer></Footer>
       <ToastContainer

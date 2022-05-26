@@ -7,9 +7,10 @@ const CheckoutForm = ({order}) => {
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
     const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
 
-    const {price, name, email} = order;
+    const {_id, price, name, email} = order;
     
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
@@ -53,7 +54,9 @@ const CheckoutForm = ({order}) => {
             setCardError('')
         }
         setSuccess('')
+        setProcessing(true)
 
+        // confire card payment
         const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -68,14 +71,37 @@ const CheckoutForm = ({order}) => {
         );
 
         if(intentError) {
-            setCardError(intentError.message)
+            setCardError(intentError?.message)
             setSuccess('')
+            setProcessing(false)
         }
         else {
             setCardError('')
             setTransactionId(paymentIntent.id)
             console.log(paymentIntent);
             setSuccess('Congrats! Your payment is Completed')
+
+            //store payment on database
+            const payment = {
+                orderId: _id,
+                transactionId: paymentIntent.id,
+            }
+            
+            fetch(`http://localhost:5000/order/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}` 
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res => res.json())
+            .then(data => {
+                setProcessing(false);
+                console.log(data);
+            })
+
+
         }
 
     }
@@ -105,6 +131,9 @@ const CheckoutForm = ({order}) => {
             </form>
             {
                 cardError && <p className='text-red-500'>{cardError}</p>
+            }
+            {
+                processing && 'Loading...'
             }
             {
                 success && <div className='text-green-500'>

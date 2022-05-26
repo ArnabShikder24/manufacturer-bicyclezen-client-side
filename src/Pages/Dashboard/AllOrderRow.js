@@ -37,6 +37,27 @@ const AllOrderRow = ({order, index, refetch}) => {
           });
     }
 
+    const handlePlace = id => {
+        fetch(`https://desolate-beach-97825.herokuapp.com/order/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}` 
+            },
+            body: JSON.stringify({shipped : true})
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount) {
+                toast.success('Order shipped')
+                refetch()
+            }
+            else {
+                toast.error('something went wrong, please try again!')
+            }
+        })
+    }
+
     return (
         <tr>
             <th>{index + 1}</th>
@@ -47,7 +68,7 @@ const AllOrderRow = ({order, index, refetch}) => {
                 {order?.paid && <span className='text-success'>PAID</span>}
                 {!order?.paid && <span className='text-orange-400'>UNPAID</span>}
             </td>
-            <td>pending...</td>
+            <td>{order?.paid && <button onClick={() => handlePlace(order?._id)} className='btn btn-xs'>{order?.shipped ? 'Shipped' : 'pendding...' }</button>}</td>
             <td>{order.paid ? <span>Not allowed</span> : <button onClick={() => handleCancelOrderAdmin(order._id)} className='btn btn-xs'>Cancle Order</button>}</td>
         </tr>
     );

@@ -1,15 +1,26 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
+import auth from '../../firebase.init';
 import AllOrderRow from './AllOrderRow';
 
 const ManageAllOrders = () => {
-    const {data: orders, isLoading, refetch} = useQuery('allorder', () => fetch('https://desolate-beach-97825.herokuapp.com/order', {
+    const navigate = useNavigate();
+    const {data: orders, isLoading, refetch} = useQuery('allorder', () => fetch('https://desolate-beach-97825.herokuapp.com/allorder', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}` 
         }
-    }).then(res => res.json()))
+    }).then(res => {
+        if(res.status === 401 || res.status === 403) {
+            signOut(auth)
+            localStorage.removeItem('accessToken')
+            navigate('/login')
+        }
+        return res.json()    
+    }))
 
     if(isLoading) {
         return <Loading></Loading>

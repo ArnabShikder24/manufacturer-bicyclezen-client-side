@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
+    const [profile, setProfile] = useState({});
+    const [reload, setReload] = useState(false);
+
+    useEffect(() => {
+       if(user) {
+         fetch(`https://desolate-beach-97825.herokuapp.com/profile/${user?.email}`)
+         .then(res => res.json())
+         .then(data => setProfile(data))
+       }
+    }, [user, reload])
 
     const handleMyprofile = e => {
         e.preventDefault();
@@ -33,6 +43,7 @@ const MyProfile = () => {
         .then(data => {
             if(data.success) {
                 toast.success('Your Profile Update successfully')
+                setReload(!reload);
             }
             else {
                 toast.error('somethings went wrong, please try again')
@@ -44,8 +55,12 @@ const MyProfile = () => {
         <div>
            <h1 className='text-2xl mb-3'>My Profile</h1>
            <div>
-               <h1 className='text-xl'>Name: {user?.displayName}</h1>
-               <h1 className='text-xl'>Email: {user?.email}</h1>
+               <h1 className='text-xl'><strong>Name: </strong> {user?.displayName}</h1>
+               <h1 className='text-xl'><strong>Email: </strong> {user?.email}</h1>
+               <h1 className='text-xl'><strong>Education: </strong> {profile.edu ? profile.edu : ''}</h1>
+               <h1 className='text-xl'><strong>Phone Number: </strong> {profile.phone ? profile.phone : ''}</h1>
+               <h1 className='text-xl'><strong>Linkedin: </strong> {profile.linkdin ? profile.linkdin : ''}</h1>
+               <h1 className='text-xl'><strong>Address: </strong> {profile.address ? profile.address : ''}</h1>
            </div>
            <div>
            <div className='flex justify-center items-center my-10'>
